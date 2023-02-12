@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DefaultNamespace.zDialogos;
 using UnityEditor.Localization;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Tables;
 using UnityEngine.Serialization;
@@ -24,6 +25,7 @@ namespace DefaultNamespace
     }
     public class CreateEntry : MonoBehaviour
     {
+        public AssetReferenceT<DialogueNodeGraph> _Graph;
         public LocalizedStringTable _Table;
         public StringTable _StringTable;
         public StringTableCollection _Collection;
@@ -80,7 +82,7 @@ namespace DefaultNamespace
         {
             if (Input.GetKeyDown(KeyCode.D))
             {
-                GetComponent<DialogueManager>().Play("Novej");
+                GetComponent<DialogueManager>().Play(_Graph.RuntimeKey.ToString());
             }
 
             if (Input.GetKeyDown(KeyCode.I))

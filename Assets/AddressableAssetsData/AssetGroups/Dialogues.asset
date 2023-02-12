@@ -21,6 +21,10 @@ MonoBehaviour:
     m_Address: Novej
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 7d2583c94d2ae4a76b1e53c16319348a
+    m_Address: Super_priklad
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 96de7165df69e4ca6ab4990599820ce6, type: 2}
   m_SchemaSet:
