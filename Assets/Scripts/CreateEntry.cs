@@ -87,7 +87,7 @@ namespace DefaultNamespace
 
             if (Input.GetKeyDown(KeyCode.I))
             {
-                FileReader.ReadFile("Assets/test.txt", dialogueNodeGraph);
+                DialogueTXTImporter.ReadFile("Assets/test.txt", dialogueNodeGraph);
             }
         }
         

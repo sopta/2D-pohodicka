@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEditor.AddressableAssets.Settings;
 using UnityEngine;
 
-class FileReader
+class DialogueTXTImporter
 {
     public static void ReadFile(string filePath, DialogueNodeGraph graph)
     {

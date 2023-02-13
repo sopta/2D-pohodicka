@@ -17,10 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 306c6397d4d954d9e9bd2ad7cddb97ef
   m_SerializeEntries:
-  - m_GUID: dd7e08f80014141aa853676bed1e41e1
-    m_Address: Novej
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 7d2583c94d2ae4a76b1e53c16319348a
     m_Address: Super_priklad
     m_ReadOnly: 0
