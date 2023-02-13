@@ -21,6 +21,10 @@ MonoBehaviour:
     m_Address: Super_priklad
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 32239ed2d8c784c979697cecb0894a3a
+    m_Address: jajaja
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 96de7165df69e4ca6ab4990599820ce6, type: 2}
   m_SchemaSet:

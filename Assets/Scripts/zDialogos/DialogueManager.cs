@@ -33,7 +33,7 @@ namespace DefaultNamespace.zDialogos
                 return CurrentNode;
             }
 
-            CurrentNode = CurrentNode.GetOutputPort("Next")?.Connection?.node as DialogueActorNode;
+            CurrentNode = CurrentNode.GetOutputPort(DialogueActorNode.NextOutput)?.Connection?.node as DialogueActorNode;
             if (CurrentNode != null) NextIndex++;
             return CurrentNode;
         }
@@ -65,6 +65,16 @@ namespace DefaultNamespace.zDialogos
         public void Play(string address)
         {
             var op = Addressables.LoadAssetAsync<DialogueNodeGraph>(address).WaitForCompletion();
+            
+            StartCoroutine(PlayInLoop(new Dialogue
+            {
+                Graph = op
+            }));
+        }
+        
+        public void Play(AssetReferenceT<DialogueNodeGraph> assetReferenceT)
+        {
+            var op = Addressables.LoadAssetAsync<DialogueNodeGraph>(assetReferenceT.RuntimeKey).WaitForCompletion();
             
             StartCoroutine(PlayInLoop(new Dialogue
             {

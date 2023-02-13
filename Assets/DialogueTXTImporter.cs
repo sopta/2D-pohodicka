@@ -7,9 +7,9 @@ using UnityEngine;
 
 class DialogueTXTImporter
 {
-    public static void ReadFile(string filePath, DialogueNodeGraph graph)
+    public static void ImportFile(string filePath, DialogueNodeGraph graph)
     {
-        List<Tuple<string, string>> dialog = new List<Tuple<string, string>>();
+        List<(string, string)> dialog = new List<(string, string)>();
 
         using (StreamReader reader = new StreamReader(filePath))
         {
@@ -21,16 +21,17 @@ class DialogueTXTImporter
                 string name = line.Replace(":", string.Empty).Trim();
                 string sentence = reader.ReadLine().Trim();
 
-                dialog.Add(new Tuple<string, string>(name, sentence));
+                dialog.Add((name, sentence));
             }
         }
         
         float offset = graph.nodes.Count == 0 ? 0 : graph.nodes.Count * 330;
-        foreach (Tuple<string, string> entry in dialog)
+        foreach (var (actorName,sentence) in dialog)
         {
             var node = graph.AddNode<DialogueActorNode>();
-            node.name = "[none actor]";
-            node.CZ.Value = entry.Item2;
+            node.name = "[none actor]"; // todo @refactoring translate actor's name to ID
+            //node.ActorID = ActorID.Ben;
+            node.CZ.Value = sentence;
 
             node.position.x = offset;
             node.position.y = 0;
@@ -44,7 +45,7 @@ class DialogueTXTImporter
         {
             if ((i + 1) == graph.nodes.Count) break;
             
-            graph.nodes[i].GetOutputPort("Next").Connect(graph.nodes[i+1].GetInputPort("Prev"));
+            graph.nodes[i].GetOutputPort(DialogueActorNode.NextOutput).Connect(graph.nodes[i+1].GetInputPort(DialogueActorNode.PrevInput));
         }
 
         var settings = UnityEditor.AddressableAssets.AddressableAssetSettingsDefaultObject.Settings;

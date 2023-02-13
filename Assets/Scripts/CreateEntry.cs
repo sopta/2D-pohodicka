@@ -26,22 +26,24 @@ namespace DefaultNamespace
     public class CreateEntry : MonoBehaviour
     {
         public AssetReferenceT<DialogueNodeGraph> _Graph;
-        public LocalizedStringTable _Table;
-        public StringTable _StringTable;
-        public StringTableCollection _Collection;
-        public LocaleIdentifier _Locale;
-        public List<DialogueEntry> _Entries;
+        //public LocalizedStringTable _Table;
+        //public StringTable _StringTable;
+        //public StringTableCollection _Collection;
+        //public LocaleIdentifier _Locale;
+        //public List<DialogueEntry> _Entries;
 
-        [FormerlySerializedAs("_TestGraph")] public DialogueNodeGraph dialogueNodeGraph;
+        public DialogueNodeGraph dialogueNodeGraph;
 
         private Dictionary<string, StringTable> Tables = new ();
 
         private void Start()
         {
+            /*
             foreach (var table in _Collection.StringTables)
             {
                 Tables.Add(table.LocaleIdentifier.Code, table);
             }
+            */
             
             /*var tableEntry = _Table.GetTable().CreateTableEntry();
             tableEntry.Value = "ahoj";
@@ -82,18 +84,20 @@ namespace DefaultNamespace
         {
             if (Input.GetKeyDown(KeyCode.D))
             {
-                GetComponent<DialogueManager>().Play(_Graph.RuntimeKey.ToString());
+                GetComponent<DialogueManager>().Play(_Graph);
             }
 
             if (Input.GetKeyDown(KeyCode.I))
             {
-                DialogueTXTImporter.ReadFile("Assets/test.txt", dialogueNodeGraph);
+                DialogueTXTImporter.ImportFile("Assets/test.txt", dialogueNodeGraph); // todo slozka RawData mozna?
             }
         }
         
+        /*
         private void LocalizationSettingsOnSelectedLocaleChanged(Locale obj)
         {
             Debug.Log(_Table.GetTable().GetEntry("aaa_001").GetLocalizedString());
         }
+        */
     }
 }

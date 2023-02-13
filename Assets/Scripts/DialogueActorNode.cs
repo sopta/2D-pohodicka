@@ -21,8 +21,11 @@ public enum ActorID
 }
 
 [NodeWidth(300)]
-public class DialogueActorNode : Node { // todo DialogueActorNode -> DialogueNode
-
+public class DialogueActorNode : Node  // todo DialogueActorNode -> DialogueNode
+{
+	public static string PrevInput = "Prev";
+	public static string NextOutput = "Next";
+	
 	[Input(ShowBackingValue.Never, ConnectionType.Override)] public int Prev;
 	[Output] public int Next;
 	[HideInInspector] public string ID;
