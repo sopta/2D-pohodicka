@@ -70,7 +70,7 @@ namespace Platformer
                     firstBack.hasExitTime = true;
 
                     var firstTrans = dialogueIdleState.AddTransition(first);
-                    firstTrans.AddCondition(UnityEditor.Animations.AnimatorConditionMode.Equals, i+1, isFaceToggle.value ? "DialogueFacePart" : "DialoguePart");
+                    firstTrans.AddCondition(AnimatorConditionMode.Equals, i+1, isFaceToggle.value ? "DialogueFacePart" : "DialoguePart");
                 }
             };
             
