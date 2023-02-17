@@ -117,6 +117,9 @@ namespace Platformer
                     newClip.start = clips[i].start;
                     newClip.duration = 4f; // todo vzit z clipu - 3f treba
                 }
+
+                // mute our preview track, we continue to work with the newest created
+                track.muted = true;
             };
             
             _Root.Add(box);
