@@ -73,7 +73,8 @@ namespace Platformer
                 for (int i = 0; i < clips.Count; i++)
                 {
                     //string stateName = nameTextField.value + "_" + clips[i].displayName;
-                    string stateName = clips[i].displayName;
+                    //string stateName = clips[i].displayName;
+                    string stateName = clips[i].animationClip.name;
                     if (FindState(rootStateMachine.states, stateName)) continue;
                     
                     var state = rootStateMachine.AddState(stateName);
@@ -86,6 +87,17 @@ namespace Platformer
                     transitionToClip.AddCondition(AnimatorConditionMode.Equals, i+1, isFaceToggle.value ? "DialogueFacePart" : "DialoguePart");
                 }
             };
+
+            var btnCreateTrack = new Button();
+            btnCreateTrack.text = "Create new track";
+            btnCreateTrack.clickable.clicked += () =>
+            {
+                var track = target as AnimationTrack;
+                track.timelineAsset.CreateTrack<AnimationTrack>();
+                EditorUtility.SetDirty(track.timelineAsset);
+                AssetDatabase.Refresh();
+                Debug.Log("Creating a new track");
+            };
             
             _Root.Add(box);
             _Root.Add(boxAnimator);
@@ -93,6 +105,7 @@ namespace Platformer
             boxAnimator.Add(nameTextField);
             boxAnimator.Add(isFaceToggle);
             boxAnimator.Add(btn);
+            boxAnimator.Add(btnCreateTrack);
             
             return _Root;
         }
