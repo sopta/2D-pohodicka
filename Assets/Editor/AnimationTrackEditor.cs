@@ -13,10 +13,12 @@ namespace Platformer
     public class AnimationTrackEditor : Editor
     {
         private VisualElement _Root;
+        private VisualTreeAsset _Template;
         
         private void OnEnable()
         {
             _Root = new VisualElement();
+            _Template = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Scripts/zDialogos/Editor/text.uxml");
         }
 
         public override VisualElement CreateInspectorGUI()
@@ -25,6 +27,10 @@ namespace Platformer
             box.text = "Default inspector";
             
             InspectorElement.FillDefaultInspector(box, serializedObject, this);
+            
+            //_Root.Add(_Template.Instantiate());
+            //_Root.Add(_Template.Instantiate());
+            //_Root.Add(_Template.Instantiate());
 
             var boxAnimator = new Box();
             boxAnimator.style.marginTop = 30;
