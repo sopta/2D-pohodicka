@@ -93,10 +93,9 @@ namespace Platformer
             btnCreateTrack.clickable.clicked += () =>
             {
                 var track = target as AnimationTrack;
-                track.timelineAsset.CreateTrack<AnimationTrack>();
-                EditorUtility.SetDirty(track.timelineAsset);
-                AssetDatabase.Refresh();
-                Debug.Log("Creating a new track");
+                AnimationTrack newTrack = track.timelineAsset.CreateTrack<AnimationTrack>();
+                newTrack.name = nameTextField.value != String.Empty ? nameTextField.value : "Animation Track";
+                newTrack.name = isFaceToggle.value ? newTrack.name + ".Face" : "";
             };
             
             _Root.Add(box);
