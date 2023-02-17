@@ -101,7 +101,21 @@ namespace Platformer
                 var track = target as AnimationTrack;
                 AnimationTrack newTrack = track.timelineAsset.CreateTrack<AnimationTrack>();
                 newTrack.name = nameTextField.value != String.Empty ? nameTextField.value : "Animation Track";
-                newTrack.name = isFaceToggle.value ? newTrack.name + ".Face" : "";
+                newTrack.name = isFaceToggle.value ? newTrack.name + ".Face" : newTrack.name;
+                
+                var clips = (target as AnimationTrack).GetClips().ToList();
+
+                //TimelineUndo.RegisterCreatedObjectUndo(playableAsset, "Create Clip");
+                //TimelineUndo.PushUndo(this, "Create Clip");
+                
+                for (int i = 0; i < clips.Count; i++)
+                {
+                    var newClip = newTrack.CreateClip<AnimationPlayableAsset>();
+                    //newClip.asset = clips[i].animationClip; // todo fix
+                    //newClip.asset = clips[i].asset; // todo fix
+                    newClip.start = clips[i].start;
+                    newClip.duration = 4f; // todo vzit z clipu - 3f treba
+                }
             };
             
             _Root.Add(box);
