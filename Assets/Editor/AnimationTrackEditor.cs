@@ -113,6 +113,7 @@ namespace Platformer
                     var newClip = newTrack.CreateClip<AnimationPlayableAsset>();
                     //newClip.asset = clips[i].animationClip; // todo fix
                     //newClip.asset = clips[i].asset; // todo fix
+                    
                     newClip.start = clips[i].start;
                     newClip.duration = 4f; // todo vzit z clipu - 3f treba
                 }
