@@ -75,12 +75,14 @@ namespace Platformer
                     string stateName = nameTextField.value + "_" + clips[i].displayName;
                     if (FindState(rootStateMachine.states, stateName)) continue;
                     
-                    var first = rootStateMachine.AddState(stateName);
-                    var firstBack = first.AddTransition(dialogueIdleState);
-                    firstBack.hasExitTime = true;
+                    var state = rootStateMachine.AddState(stateName);
+                    state.motion = clips[i].animationClip;
+                    
+                    var transitionToIdle = state.AddTransition(dialogueIdleState);
+                    transitionToIdle.hasExitTime = true;
 
-                    var firstTrans = dialogueIdleState.AddTransition(first);
-                    firstTrans.AddCondition(AnimatorConditionMode.Equals, i+1, isFaceToggle.value ? "DialogueFacePart" : "DialoguePart");
+                    var transitionToClip = dialogueIdleState.AddTransition(state);
+                    transitionToClip.AddCondition(AnimatorConditionMode.Equals, i+1, isFaceToggle.value ? "DialogueFacePart" : "DialoguePart");
                 }
             };
             
