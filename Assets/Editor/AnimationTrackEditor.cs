@@ -28,6 +28,16 @@ namespace Platformer
 
             var boxAnimator = new Box();
             boxAnimator.style.marginTop = 30;
+            boxAnimator.style.paddingTop = 5;
+            boxAnimator.style.paddingBottom = 5;
+            boxAnimator.style.paddingLeft = 5;
+            boxAnimator.style.paddingRight = 5;
+
+            var boxLabel = new Label();
+            boxLabel.text = "Animator";
+            boxLabel.style.unityFontStyleAndWeight = new StyleEnum<FontStyle>(FontStyle.Bold);
+            boxLabel.style.marginBottom = 15;
+            boxAnimator.Add(boxLabel);
             
             var controller = new ObjectField("Controller");
             controller.objectType = typeof(AnimatorController);
@@ -39,7 +49,7 @@ namespace Platformer
             isFaceToggle.label = "Is Face";
             
             var btn = new Button();
-            btn.text = "Test";
+            btn.text = "Create";
             btn.clickable.clicked += () =>
             {
                 var controllerValue = controller.value as AnimatorController;

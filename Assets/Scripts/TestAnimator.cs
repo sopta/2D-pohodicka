@@ -48,7 +48,7 @@ namespace DefaultNamespace
             // nazev vemu z nazvu clipu
         }
 
-        [MenuItem("MyMenu/Create Controller")]
+        //[MenuItem("MyMenu/Create Controller")]
         static void CreateController()
         {
             // Creates the controller
