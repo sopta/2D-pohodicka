@@ -72,7 +72,8 @@ namespace Platformer
                 
                 for (int i = 0; i < clips.Count; i++)
                 {
-                    string stateName = nameTextField.value + "_" + clips[i].displayName;
+                    //string stateName = nameTextField.value + "_" + clips[i].displayName;
+                    string stateName = clips[i].displayName;
                     if (FindState(rootStateMachine.states, stateName)) continue;
                     
                     var state = rootStateMachine.AddState(stateName);
